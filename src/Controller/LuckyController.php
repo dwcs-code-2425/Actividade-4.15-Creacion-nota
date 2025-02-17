@@ -20,13 +20,17 @@ final class LuckyController extends AbstractController
     #[Route('/lucky/number/{max}', name: 'app_lucky_number')]
     public function number(int $max): Response
     {
-        $number = random_int(0, $max);
+        if ($max % 2 != 0) {
+            return   $this->redirectToRoute("app_table", ["filas" => $max, "cols" => $max]);
+        } else {
+            $number = random_int(0, $max);
 
-       //return new Response("<html><body>".$number."</body></html>");
+            //return new Response("<html><body>".$number."</body></html>");
 
-        return $this->render('lucky/index.html.twig', [
-            'controller_name' => 'LuckyController',
-            'numero' => $number
-        ]);
+            return $this->render('lucky/index.html.twig', [
+                'controller_name' => 'LuckyController',
+                'numero' => $number
+            ]);
+        }
     }
 }

@@ -38,7 +38,8 @@
 				<tr>
 					{%  for j in 0..cols-1 %}
 						<td>
-							{{array[i][j]}}
+                        <a href="{{path('app_lucky_number', {'max':array[i][j]})}}">{{array[i][j]}}</a>
+							
 						</td>
 					{% endfor %}
 
