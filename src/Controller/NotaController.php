@@ -38,6 +38,8 @@ final class NotaController extends AbstractController
 
         $notaService->crearNota($nota);
 
+        $this->addFlash("info", "La nota se ha creado con éxito");
+
         return $this->render('nota/index.html.twig', [
             'controller_name' => 'NotaController',
             'idNota' => $nota->getId()
