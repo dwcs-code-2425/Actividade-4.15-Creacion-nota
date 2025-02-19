@@ -43,4 +43,19 @@ final class NotaController extends AbstractController
             'idNota' => $nota->getId()
         ]);
     }
+
+    #[Route('/nota', name: 'app_nota_list')]
+    public function list(NotaService $notaService): Response
+    {
+
+
+        $notas = $notaService->findAll();
+
+        return $this->render('nota/list.html.twig', [
+            
+            'notas' => $notas
+        ]);
+    }
+
+
 }

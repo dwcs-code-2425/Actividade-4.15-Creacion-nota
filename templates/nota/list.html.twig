@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listado de notas
+{% endblock %}
+
+{% block body %}
+
+
+	<div>
+		<h1>Listado de notas</h1>
+
+		<table class="table">
+			<tr>
+				<th>
+					Id.
+				</th>
+				<th>
+					Título
+				</th>
+				<th>
+					Descripción
+				</th>
+			</tr>
+
+			{% for nota in notas %}
+				<tr>
+					<td>{{nota.id}}</td>
+					<td>
+						{{nota.titulo}}
+					</td>
+					<td>
+						{{nota.descripcion}}
+					</td>
+
+				</tr>
+			{% endfor %}
+		</div>
+	{% endblock %}
