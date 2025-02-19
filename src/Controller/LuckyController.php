@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Service\MessageGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -32,5 +33,11 @@ final class LuckyController extends AbstractController
                 'numero' => $number
             ]);
         }
+    }
+
+    #[Route('/lucky/message', name: 'app_lucky_message')]
+    public function message(MessageGenerator $messageGenerator){
+        $message = $messageGenerator->getHappyMessage();
+        return new Response($message);
     }
 }
